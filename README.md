@@ -22,23 +22,23 @@ The framework focuses on retaining only recent operational data in databases whi
 
 ```mermaid
 graph LR
- subgraph "Active Database"
- M[MongoDB Atlas<br/>(last 7 days)]
- P[RDS PostgreSQL<br/>(last 7 days)]
- end
- 
- subgraph "Archive Pipeline"
- S[EventBridge<br/>(Weekly Schedule)]
- J[ECS/Lambda Job<br/>(Export & Transform)]
- B[S3 Bucket<br/>(Archive)]
- G[Glacier Storage<br/>(Lifecycle Target)]
- end
- 
- M -->|Delete >7d| J
- P -->|Delete >7d| J
- S --> J
- J --> B
- B --> G
+    subgraph Active_Database
+        M[MongoDB Atlas - Last 7 Days]
+        P[PostgreSQL RDS - Last 7 Days]
+    end
+
+    subgraph Archive_Pipeline
+        S[EventBridge Scheduler]
+        J[Lambda or ECS Export Job]
+        B[Amazon S3 Archive Bucket]
+        G[Amazon Glacier Storage]
+    end
+
+    M -->|Archive Old Records| J
+    P -->|Archive Old Records| J
+    S --> J
+    J --> B
+    B --> G
 ```
 
 ---
