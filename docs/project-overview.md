@@ -28,3 +28,20 @@ The AWS Database Archival Framework is a production-oriented cloud archival solu
 - Monitoring and alerting
 - Secure IAM-based access control
 - Infrastructure as Code deployment
+
+## Operational Workflow
+
+1. Export historical records from databases
+2. Convert datasets into compressed Parquet format
+3. Upload archival objects into Amazon S3
+4. Transition data into Glacier storage classes
+5. Monitor archival workflows using CloudWatch
+6. Restore archived datasets when required
+
+## Target Use Cases
+
+- FinTech transaction archival
+- Enterprise compliance retention
+- Log retention systems
+- Analytics data lifecycle management
+- Long-term disaster recovery storage
