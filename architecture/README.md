@@ -1,24 +1,33 @@
 # Architecture Overview
 
-This directory contains architecture diagrams and deployment references for the AWS Database Archival Framework.
+This directory contains architecture diagrams, deployment references, workflow explanations, and AWS infrastructure design documents for the AWS Database Archival Framework.
 
-## Components
+## Core Components
 
 - MongoDB Atlas
 - PostgreSQL RDS
 - AWS Lambda
 - ECS Fargate
-- EventBridge
+- Amazon EventBridge
 - Amazon S3
 - Amazon Glacier
 - CloudWatch
 - IAM & KMS
 
-## Workflow
+## High-Level Workflow
 
-1. Weekly EventBridge schedule triggers archival job
-2. Export records older than 7 days
-3. Convert data into Parquet format
-4. Compress and upload to S3
-5. Lifecycle policy moves data into Glacier
-6. Monitoring and validation handled via CloudWatch
+1. EventBridge schedules archival workflows
+2. Lambda or ECS jobs export historical records
+3. Data converted into compressed Parquet format
+4. Archive objects uploaded into Amazon S3
+5. Lifecycle policies move objects into Glacier storage
+6. CloudWatch monitors archival health and failures
+
+## Architecture Goals
+
+- Reduce database storage costs
+- Improve database performance
+- Automate archival workflows
+- Enable secure long-term retention
+- Support disaster recovery operations
+- Provide enterprise-grade monitoring
