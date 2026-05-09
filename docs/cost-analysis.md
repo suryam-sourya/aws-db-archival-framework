@@ -15,3 +15,19 @@
 - Use Glacier lifecycle transitions
 - Compress archival datasets
 - Use Parquet format for efficient storage
+
+## Expected Benefits
+
+- Reduced database storage costs
+- Faster operational queries
+- Lower infrastructure maintenance overhead
+- Long-term compliance retention
+- Improved disaster recovery readiness
+
+## Recommended Storage Lifecycle
+
+| Storage Tier | Retention Purpose |
+|---|---|
+| S3 Standard | Recent archives |
+| Glacier Instant Retrieval | Frequently restored archives |
+| Glacier Deep Archive | Long-term retention |
