@@ -1,0 +1,21 @@
+{
+  "Rules": [
+    {
+      "ID": "ArchiveToGlacier",
+      "Status": "Enabled",
+      "Filter": {
+        "Prefix": "archive/"
+      },
+      "Transitions": [
+        {
+          "Days": 30,
+          "StorageClass": "GLACIER"
+        },
+        {
+          "Days": 90,
+          "StorageClass": "DEEP_ARCHIVE"
+        }
+      ]
+    }
+  ]
+}
